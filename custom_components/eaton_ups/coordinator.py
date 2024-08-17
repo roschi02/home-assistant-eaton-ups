@@ -131,4 +131,4 @@ class SnmpCoordinator(DataUpdateCoordinator):
 
     async def _async_update_data(self) -> dict:
         """Fetch the latest data from the source."""
-        return await self._update_data()
+        return await self.hass.async_add_executor_job(self._update_data)
